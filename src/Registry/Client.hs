@@ -27,7 +27,6 @@ instance FromJSON AuthResponseBody
 baseUrlServer = "http://localhost:8080/"
 authenticateResource = baseUrlServer ++ "api/authenticate"
 
---auth :: String -> String -> IO (Maybe AuthResponseBody)
 auth login password =
     let handler e@(StatusCodeException _ _ _) = return Nothing
         authObj = Auth login password False
