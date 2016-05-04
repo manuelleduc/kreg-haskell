@@ -2,8 +2,7 @@ module Kreg.Options.Auth (auth) where
 
 import           Kreg.UI.UserInput     (askLogins)
 import qualified Registry.Client       as C
-import           System.Directory      (getHomeDirectory)
-import           System.FilePath.Posix ((</>))
+import Kreg.TokenFileManager (save)
 
 auth :: IO ()
 auth = do
@@ -15,7 +14,5 @@ auth = do
             case res of
                 Nothing -> putStrLn "Authentication failed"
                 Just dt -> do
-                    homeDirectory <- getHomeDirectory
-                    writeFile (homeDirectory </> ".kregrch") (C.id_token dt)
-
+                    save dt
                     putStrLn "Authentication succeeded"
