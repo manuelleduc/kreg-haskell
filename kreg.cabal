@@ -31,7 +31,8 @@ executable kreg-exe
                      , kreg
                      , optparse-generic
                      , haskeline
-
+                     , directory
+                     , filepath
   default-language:    Haskell2010
 
 test-suite kreg-test
